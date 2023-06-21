@@ -15,7 +15,7 @@ Assuming a closed differentiable surface in mesh representation, get all the
 faces that have a normal close enough to perpendicular to the given vector and
 try to connect them in a non-trivial loop. The shortest of the boundaries of
 that loop approximates the isocline for that direction. Estimate its
-lenght. Then find V with shortest isocline lenght.
+length. Then find V with shortest isocline length.
 
 # Requirements
 

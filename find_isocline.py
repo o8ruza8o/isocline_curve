@@ -6,8 +6,15 @@ import os
 
 tolerance = 1e-1
 
-def generate_directions():
-    return [np.array([0, 0, 1])]
+def generate_directions(min_phi=0, max_phi=np.pi, min_theta=0, max_theta=2*np.pi):
+    directions = []
+    for phi in np.linspace(min_phi, max_phi, 10):
+        for theta in np.linspace(min_theta, max_theta, 10):
+            directions.append(np.array([np.sin(phi)*np.cos(theta), np.sin(phi)*np.sin(theta), np.cos(phi)]))
+    return directions
+
+def estimate_length(faces):
+    return len(faces)
 
 def main(file_name, visualize):
     mesh = om.read_trimesh(file_name)
@@ -15,17 +22,23 @@ def main(file_name, visualize):
     mesh.update_normals()
     mesh.request_face_colors()
     face_normals = mesh.face_normals()
-    for j, direction in enumerate(generate_directions()):
+
+    isoline_lengths = []
+    directions = generate_directions()
+    for j, direction in enumerate(directions):
         perpendicular_faces = []
         for i, face in enumerate(mesh.faces()):
             if np.abs(np.dot(face_normals[i], direction)) < tolerance:
                 perpendicular_faces.append(i)
+        isoline_lengths.append(estimate_length(perpendicular_faces))
+
+    min_direction = directions[isoline_lengths.index(max(isoline_lengths))]
+    print(min_direction, "direction chosen")
+    for i, face in enumerate(mesh.faces()):
+            if np.abs(np.dot(face_normals[i], min_direction)) < tolerance:
                 mesh.set_color(face, [0.6, 0.3, 0.3, 0])
             else:
                 mesh.set_color(face, [0.3, 0.6, 0.3, 0])
-        print(perpendicular_faces)
-
-
     name, ext = os.path.splitext(file_name)
     om.write_mesh(name + '_labeled.obj', mesh, face_color=True)
 
