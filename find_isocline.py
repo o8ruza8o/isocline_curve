@@ -7,39 +7,41 @@ import os
 tolerance = 1e-1
 large_num = 1e7
 
-# class for adjacency matrix representation of the graph
+# class for adjacency matrix representation of the graph and O(V^2) Dijkstra
 class Graph():
     def __init__(self, n_verts):
         self.V = n_verts
         self.graph = np.zeros((self.V, self.V))
  
-    def printSolution(self, dist, path):
-        print("Vertex \t Distance from Source")
+    def print_solution(self, dist, path):
+        print("Vertex \t\t Distance from Source")
         for node in range(self.V):
             print(node, "\t\t", dist[node])
  
-    def minDistance(self, dist, sptSet):
+    def min_distance(self, dist, spt_set):
         min = large_num
         for v in range(self.V):
-            if dist[v] < min and sptSet[v] == False:
+            if dist[v] < min and spt_set[v] == False:
                 min = dist[v]
                 min_index = v
         return min_index
 
     def dijkstra(self, src):
         dist = [large_num] * self.V
-        path = [np.inf] * self.V
         dist[src] = 0
-        sptSet = [False] * self.V
+        path = [[]] * self.V
+        spt_set = [False] * self.V
  
         for count in range(self.V):
-            u = self.minDistance(dist, sptSet)
-            sptSet[u] = True
+            u = self.min_distance(dist, spt_set)
+            spt_set[u] = True
             for v in range(self.V):
-                if (self.graph[u][v] > 0 and sptSet[v] == False and dist[v] > dist[u] + self.graph[u][v]):
-                    dist[v] = dist[u] + self.graph[u][v]
-                    path[count] = u
-        # self.printSolution(dist, path)
+                new_distance = dist[u] + self.graph[u][v]
+                if self.graph[u][v] > 0 and spt_set[v] == False and dist[v] > new_distance:
+                    dist[v] = new_distance
+                    path[count].append(u)
+        # self.print_solution(dist, path)
+        return dist, path
 
 def generate_directions(min_phi=0, max_phi=np.pi, min_theta=0, max_theta=2*np.pi):
     directions = []

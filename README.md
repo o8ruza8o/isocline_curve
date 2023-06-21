@@ -5,8 +5,7 @@ Find a direction V with a shortest 0° isocline curve
 # Approach
 
 Isoline curve is constructed given a reference vector V and an angle A such that
-the angle between the surface normal anywhere on the curve and V is (pi/2 - A)
-then we integrate its length.
+the angle between the surface normal anywhere on the curve and V is (pi/2 - A).
 
 In our case, the angle A = 0 and the 0° isocline is a curve with normals
 perpendicular to a given V. We are looking for the V with shortest isocline.
