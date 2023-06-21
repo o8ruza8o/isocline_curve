@@ -9,7 +9,7 @@ the angle between the normal to surface and V is (pi/2 - A) and we integrate its
 length.
 
 In our case, the angle A = 0 and we are looking for a curve with normals
-perpendicular to a given V.
+perpendicular to the given V.
 
 Assuming a closed differentiable surface in mesh representation, get all the faces
 that have a normal close enough to perpendicular to the given vector and try to
@@ -27,4 +27,6 @@ pip install openmesh
 ```
 python find_isocline.py examples/bob_isotropic.obj 
 ```
+
+[Bob isocline](examples/bob00.png)
 
