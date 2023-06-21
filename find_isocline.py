@@ -14,6 +14,8 @@ def generate_directions(min_phi=0, max_phi=np.pi, min_theta=0, max_theta=2*np.pi
     return directions
 
 def estimate_length(faces):
+    # Dijkstra to get the shortest path
+
     return len(faces)
 
 def main(file_name, visualize):
