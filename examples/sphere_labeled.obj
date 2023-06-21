@@ -165,10 +165,8 @@ v 0.921001 -0.996242 -1.842015
 usemtl mat0
 f 160 162 161
 f 157 158 159
-usemtl mat1
 f 152 154 153
 f 147 149 148
-usemtl mat0
 f 142 144 143
 f 135 136 137
 f 130 131 132
@@ -180,16 +178,12 @@ f 103 105 104
 f 96 98 97
 f 89 91 90
 f 82 84 83
-usemtl mat1
 f 75 76 77
-usemtl mat0
 f 70 71 72
 f 63 64 65
 f 56 57 58
-usemtl mat1
 f 49 50 51
 f 45 49 43
-usemtl mat0
 f 48 50 46
 f 44 51 47
 f 54 56 52
@@ -203,9 +197,7 @@ f 62 71 69
 f 67 72 61
 f 47 75 74
 f 69 76 48
-usemtl mat1
 f 73 77 68
-usemtl mat0
 f 80 78 82
 f 44 81 83
 f 79 43 84
@@ -240,15 +232,11 @@ f 141 139 142
 f 114 140 143
 f 138 113 144
 f 139 146 147
-usemtl mat1
 f 119 138 148
-usemtl mat0
 f 145 118 149
 f 146 151 152
 f 124 145 153
-usemtl mat1
 f 150 123 154
-usemtl mat0
 f 141 157 155
 f 133 158 140
 f 156 159 134
@@ -275,9 +263,7 @@ f 13 155 157
 f 1 141 155
 f 14 150 154
 f 19 154 123
-usemtl mat1
 f 3 123 150
-usemtl mat0
 f 19 124 153
 f 18 153 145
 f 4 145 124
@@ -289,9 +275,7 @@ f 21 149 118
 f 4 118 145
 f 21 119 148
 f 20 148 138
-usemtl mat1
 f 5 138 119
-usemtl mat0
 f 20 139 147
 f 18 147 146
 f 1 146 139
@@ -307,19 +291,21 @@ f 1 139 141
 f 17 137 134
 f 24 106 137
 f 2 134 106
+usemtl mat1
 f 24 136 107
 f 23 81 136
+usemtl mat0
 f 11 107 81
 f 23 135 80
 f 17 133 135
 f 6 80 133
 f 15 132 128
-usemtl mat1
 f 26 99 132
 f 3 128 99
-usemtl mat0
+usemtl mat1
 f 26 131 100
 f 25 108 131
+usemtl mat0
 f 7 100 108
 f 25 130 109
 f 15 129 130
@@ -327,8 +313,10 @@ f 2 109 129
 f 19 127 124
 f 28 92 127
 f 4 124 92
+usemtl mat1
 f 28 126 93
 f 27 102 126
+usemtl mat0
 f 8 93 102
 f 27 125 101
 f 19 123 125
@@ -336,8 +324,10 @@ f 3 101 123
 f 21 122 119
 f 30 85 122
 f 5 119 85
+usemtl mat1
 f 30 121 86
 f 29 95 121
+usemtl mat0
 f 9 86 95
 f 29 120 94
 f 21 118 120
@@ -345,37 +335,35 @@ f 4 94 118
 f 22 117 114
 f 32 78 117
 f 6 114 78
+usemtl mat1
 f 32 116 79
 f 31 88 116
+usemtl mat0
 f 10 79 88
-usemtl mat1
 f 31 115 87
-usemtl mat0
 f 22 113 115
-usemtl mat1
 f 5 87 113
-usemtl mat0
 f 24 107 112
 f 33 112 74
 f 11 74 107
 f 33 73 111
 f 25 111 108
 f 7 108 73
+usemtl mat1
 f 25 109 110
 f 24 110 106
+usemtl mat0
 f 2 106 109
-usemtl mat1
 f 26 100 105
-usemtl mat0
 f 34 105 66
-usemtl mat1
 f 7 66 100
-usemtl mat0
 f 34 67 104
 f 27 104 102
 f 8 102 67
+usemtl mat1
 f 27 101 103
 f 26 103 99
+usemtl mat0
 f 3 99 101
 f 28 93 98
 f 35 98 59
@@ -383,19 +371,21 @@ f 8 59 93
 f 35 60 97
 f 29 97 95
 f 9 95 60
+usemtl mat1
 f 29 94 96
 f 28 96 92
+usemtl mat0
 f 4 92 94
 f 30 86 91
 f 36 91 52
 f 9 52 86
 f 36 53 90
-usemtl mat1
 f 31 90 88
 f 10 88 53
-usemtl mat0
+usemtl mat1
 f 31 87 89
 f 30 89 85
+usemtl mat0
 f 5 85 87
 f 32 79 84
 f 37 84 43
@@ -403,14 +393,14 @@ f 10 43 79
 f 37 44 83
 f 23 83 81
 f 11 81 44
+usemtl mat1
 f 23 80 82
 f 32 82 78
+usemtl mat0
 f 6 78 80
 f 33 77 73
 f 39 68 77
-usemtl mat1
 f 7 73 68
-usemtl mat0
 f 39 76 69
 f 38 48 76
 f 12 69 48
@@ -452,13 +442,9 @@ f 42 46 50
 f 12 48 46
 f 42 49 45
 f 37 43 49
-usemtl mat1
 f 10 45 43
-usemtl mat0
 f 42 50 49
-usemtl mat1
 f 38 51 50
-usemtl mat0
 f 37 49 51
 f 41 57 56
 f 42 58 57
@@ -469,50 +455,66 @@ f 35 63 65
 f 39 71 70
 f 40 72 71
 f 34 70 72
-usemtl mat1
 f 38 76 75
-usemtl mat0
 f 39 77 76
 f 33 75 77
+usemtl mat1
 f 23 82 83
+usemtl mat0
 f 37 83 84
+usemtl mat1
 f 32 84 82
 f 31 89 90
+usemtl mat0
 f 36 90 91
+usemtl mat1
 f 30 91 89
 f 29 96 97
+usemtl mat0
 f 35 97 98
+usemtl mat1
 f 28 98 96
 f 27 103 104
+usemtl mat0
 f 34 104 105
+usemtl mat1
 f 26 105 103
 f 25 110 111
+usemtl mat0
 f 33 111 112
+usemtl mat1
 f 24 112 110
 f 31 116 115
 f 32 117 116
+usemtl mat0
 f 22 115 117
+usemtl mat1
 f 29 121 120
 f 30 122 121
+usemtl mat0
 f 21 120 122
+usemtl mat1
 f 27 126 125
 f 28 127 126
+usemtl mat0
 f 19 125 127
+usemtl mat1
 f 25 131 130
 f 26 132 131
+usemtl mat0
 f 15 130 132
+usemtl mat1
 f 23 136 135
 f 24 137 136
+usemtl mat0
 f 17 135 137
 f 16 142 143
 f 22 143 144
 f 20 144 142
 f 20 147 148
 f 21 148 149
-usemtl mat1
 f 18 149 147
 f 18 152 153
-usemtl mat0
 f 19 153 154
 f 14 154 152
 f 16 158 157

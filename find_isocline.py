@@ -6,16 +6,70 @@ import os
 
 tolerance = 1e-1
 
+
+# class for adjacency matrix representation of the graph
+class Graph():
+    def __init__(self, vertices):
+        self.V = len(vertices)
+        self.vertices = vertices
+        self.graph = np.zeros((self.V, self.V))
+ 
+    def printSolution(self, dist, path):
+        print("Vertex \t Distance from Source")
+        for node in range(self.V):
+            print(node, "\t\t", dist[node])
+ 
+    def minDistance(self, dist, sptSet):
+        min = 1e7
+        for v in range(self.V):
+            if dist[v] < min and sptSet[v] == False:
+                min = dist[v]
+                min_index = v
+        return min_index
+
+    def dijkstra(self, src):
+        dist = [1e7] * self.V
+        path = [np.inf] * self.V
+        dist[src] = 0
+        sptSet = [False] * self.V
+ 
+        for count in range(self.V):
+            u = self.minDistance(dist, sptSet)
+            sptSet[u] = True
+            for v in range(self.V):
+                if (self.graph[u][v] > 0 and sptSet[v] == False and dist[v] > dist[u] + self.graph[u][v]):
+                    dist[v] = dist[u] + self.graph[u][v]
+                    path[count] = u
+        self.printSolution(dist, path)
+
 def generate_directions(min_phi=0, max_phi=np.pi, min_theta=0, max_theta=2*np.pi):
     directions = []
     for phi in np.linspace(min_phi, max_phi, 10):
         for theta in np.linspace(min_theta, max_theta, 10):
             directions.append(np.array([np.sin(phi)*np.cos(theta), np.sin(phi)*np.sin(theta), np.cos(phi)]))
-    return directions
+    # return directions
+    return [directions[0]]
 
-def estimate_length(faces):
+def estimate_length(mesh, faces):
     # Dijkstra to get the shortest path
-
+    vertices = set()
+    for fh in faces:
+        vertices.update([vh.idx() for vh in mesh.fv(fh)])
+    g = Graph(vertices)
+    vertice = list(vertices)
+    adjecency = np.zeros((len(vertices), len(vertices)))
+    for i, vid0 in enumerate(vertices):
+        for j, vid1 in enumerate(vertices):
+            for fh in faces:
+                face_vertices = [vh.idx() for vh in mesh.fv(fh)]
+                if vid1 in face_vertices and vid0 in face_vertices:
+                    point0 = mesh.points()[vid0]
+                    point1 = mesh.points()[vid1]
+                    adjecency[i][j] = np.linalg.norm(point1 - point0)
+                    adjecency[j][i] = np.linalg.norm(point1 - point0)
+    g.graph = adjecency
+    print(adjecency)
+    g.dijkstra(0)
     return len(faces)
 
 def main(file_name, visualize):
@@ -31,8 +85,8 @@ def main(file_name, visualize):
         perpendicular_faces = []
         for i, face in enumerate(mesh.faces()):
             if np.abs(np.dot(face_normals[i], direction)) < tolerance:
-                perpendicular_faces.append(i)
-        isoline_lengths.append(estimate_length(perpendicular_faces))
+                perpendicular_faces.append(face)
+        isoline_lengths.append(estimate_length(mesh, perpendicular_faces))
 
     min_direction = directions[isoline_lengths.index(max(isoline_lengths))]
     print(min_direction, "direction chosen")
