@@ -21,10 +21,12 @@ approximates the isocline for that direction.
 Tested with Python 3.10.11 and Docker version 24.0.2
 
 If you do not have pymesh locally just:
-
+```
 run -it --rm -v `pwd`:/src pymesh/pymesh bash
+```
 
 # Run
-
+```
 python /src/find_isocline.py /src/examples/sphere.obj
+```
 
