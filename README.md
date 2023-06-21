@@ -28,5 +28,5 @@ pip install openmesh
 python find_isocline.py examples/bob_isotropic.obj 
 ```
 
-[Bob isocline](examples/bob00.png)
+![Bob isocline](examples/bob00.png)
 
