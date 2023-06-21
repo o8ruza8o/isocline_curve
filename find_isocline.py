@@ -1,7 +1,8 @@
 import argparse
-import pymesh
+import trimesh
+import openmesh as om
 import numpy as np
-
+import os
 
 tolerance = 1e-1
 
@@ -9,18 +10,24 @@ def generate_directions():
     return [np.array([0, 0, 1])]
 
 def main(file_name, visualize):
-    mesh = pymesh.load_mesh(file_name)
-
-    mesh.add_attribute("face_normal")
-    all_normals = mesh.get_attribute("face_normal")
-
+    mesh = om.read_trimesh(file_name)
+    mesh.request_face_normals()
+    mesh.update_normals()
+    mesh.request_face_colors()
+    face_normals = mesh.face_normals()
     for j, direction in enumerate(generate_directions()):
         perpendicular_faces = []
-        for i, face in enumerate(mesh.faces):
-            face_normal = np.array(all_normals[3 * i : 3 * i + 3])
-            if np.abs(np.dot(face_normal, direction)) < tolerance:
+        for i, face in enumerate(mesh.faces()):
+            if np.abs(np.dot(face_normals[i], direction)) < tolerance:
                 perpendicular_faces.append(i)
+                mesh.set_color(face, [0.6, 0.3, 0.3, 0])
+            else:
+                mesh.set_color(face, [0.3, 0.6, 0.3, 0])
         print(perpendicular_faces)
+
+
+    name, ext = os.path.splitext(file_name)
+    om.write_mesh(name + '_labeled.obj', mesh, face_color=True)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description = 'Find shortest isocline')

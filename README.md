@@ -18,15 +18,13 @@ approximates the isocline for that direction.
 
 # Requirements
 
-Tested with Python 3.10.11 and Docker version 24.0.2
-
-If you do not have pymesh locally just:
+Tested with Python 3.10.11 and openmesh 1.24.3
 ```
-run -it --rm -v `pwd`:/src pymesh/pymesh bash
+pip install openmesh
 ```
 
-# Run
+# Run an example
 ```
-python /src/find_isocline.py /src/examples/sphere.obj
+python find_isocline.py examples/bob_isotropic.obj 
 ```
 
